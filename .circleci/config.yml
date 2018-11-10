@@ -6,21 +6,9 @@ jobs:
     steps:
       - checkout
       - run: echo $CIRCLE_PULL_REQUEST
-      - restore_cache:
-          name: Restore yarn cache
-          keys:
-            - yarn-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
-            - yarn-{{ arch }}-{{ checksum "yarn.lock" }}-
-            - yarn-
       - run:
           name: install dependencies
-          command: yarn install -g serverless
-      - save_cache:
-          name: Store yarn cache
-          key: yarn-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
-          paths:
-            - ~/.cache/yarn
-            - node_modules
+          command: npm install -g serverless
       - run:
           name: debug
           command: |
