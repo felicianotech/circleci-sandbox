@@ -1,0 +1,25 @@
+{
+  "name": "circleci-sandbox",
+  "version": "1.0.0",
+  "description": "Sandbox for CircleCI Testing",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/levlaz/circleci-sandbox.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/levlaz/circleci-sandbox/issues"
+  },
+  "homepage": "https://github.com/levlaz/circleci-sandbox#readme",
+  "dependencies": {
+    "left-pad": "^1.3.0"
+  }
+}
