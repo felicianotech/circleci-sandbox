@@ -5,10 +5,19 @@ jobs:
       - image: circleci/ruby:2.4.5-node-browsers 
     steps:
       - checkout
-      - run: echo $CIRCLE_PULL_REQUEST
+      - restore_cache:
+          keys:
+            - v1-node-{{ checksum "package-lock.json" }}
+            - v1-node-
       - run:
           name: install dependencies
-          command: sudo npm install -g serverless
+          command: |
+            npm install 
+            sudo npm install -g serverless
+      - save_cache:
+          key: v1-node-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
       - run:
           name: debug
           command: |
