@@ -2,25 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.5-node-browsers 
+      - image: circleci/python:3.6
     steps:
+      - setup_remote_docker
       - checkout
-      - restore_cache:
-          keys:
-            - v1-node-{{ checksum "package-lock.json" }}
-            - v1-node-
-      - run:
-          name: install dependencies
-          command: |
-            npm install 
-            sudo npm install -g serverless
-      - save_cache:
-          key: v1-node-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
       - run:
           name: debug
-          command: |
-            ls -al /usr/local/bin/sls
-            which sls
-            sls --version
+          command: docker ps
